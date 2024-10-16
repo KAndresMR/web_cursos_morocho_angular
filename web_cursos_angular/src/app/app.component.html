@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio - Gestión de Cursos</title>    
+</head>
+
+<body>
+    <!-- Encabezado (barra de navegación) -->
+    <header>
+        <nav>
+            <img src="assets/images/logo_ups.png" alt="Logo Universidad">
+            <ul>
+                <li><a routerLink="homeScreen">Inicio</a></li>
+                <li><a routerLink="coursesScreen">Cursos</a></li>
+                <li><a routerLink="add_coursesScreen">Agregar Cursos</a></li>
+                <li><a routerLink="contactScreen">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <router-outlet />
+    <!-- Pie de página -->
+    <footer>
+        <p>&copy; 2024 Gestión de Cursos. Todos los derechos reservados.</p>
+    </footer>
+    
+</body>
+
+</html>
+

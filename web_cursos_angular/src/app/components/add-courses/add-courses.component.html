@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agregar Curso - Gestión de Cursos</title>
+</head>
+
+<body>
+
+
+    <!-- Contenido de la página de agregar curso -->
+    <main>
+        <section id="add-course">
+            <h1>Agregar Nuevo Curso</h1>
+            <form id="add-course-form">
+                <div>
+                    <label for="course-name">Nombre del Curso:</label><br>
+                    <input type="text" id="course-name" name="course-name" required>
+                </div>
+
+                <div>
+                    <label for="instructor-name">Nombre del Instructor:</label><br>
+                    <input type="text" id="instructor-name" name="instructor-name" required>
+                </div>
+
+                <div>
+                    <label for="start-date">Fecha de Inicio:</label><br>
+                    <input type="date" id="start-date" name="start-date" required>
+                </div>
+
+                <div>
+                    <label for="duration">Duración (en semanas):</label><br>
+                    <input type="number" id="duration" name="duration" required>
+                </div>
+
+                <div>
+                    <label for="description">Descripción:</label><br>
+                    <textarea id="description" name="description" rows="4" required></textarea>
+                </div>
+
+                <button type="submit" class="btnAddCourse">Agregar Curso</button>
+            </form>
+        </section>
+    </main>
+
+
+</body>
+
+</html>

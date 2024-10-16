@@ -1,0 +1,41 @@
+/* Formularios */
+form {
+    display: grid;
+    gap: 15px;
+}
+
+form div {
+    display: flex;
+    flex-direction: column;
+}
+
+form label {
+    font-size: 16px;
+    color: #444;
+}
+
+form input,
+form textarea,
+form select {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+/* Botón de agregar curso */
+#add-course-form button {
+    background-color: #ff9800;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+#add-course-form button:hover {
+    background-color: #fb8c00;
+    transform: scale(1.05);
+}

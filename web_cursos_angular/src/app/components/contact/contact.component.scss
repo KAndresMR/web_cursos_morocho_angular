@@ -1,0 +1,73 @@
+/* Formularios */
+form {
+    display: grid;
+    gap: 15px;
+}
+
+form div {
+    display: flex;
+    flex-direction: column;
+}
+
+form label {
+    font-size: 16px;
+    color: #444;
+}
+
+form input,
+form textarea {
+    padding: 10px;
+    font-size: 16px;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+/* Efecto al pasar el mouse sobre inputs */
+input:hover,
+textarea:hover {
+    border-color: #2563eb;
+}
+
+/* Color estable al hacer clic */
+input:focus,
+textarea:focus {
+    background-color: #e3f2fd;
+    border-color: #1e3a8a;
+}
+
+/* Animación de temblor */
+@keyframes shake {
+    0%, 100% { transform: translate(0); }
+    25% { transform: translate(-1px); }
+    50% { transform: translate(1px); }
+    75% { transform: translate(-1px); }
+}
+
+/* Efecto de temblor cuando se aplica la clase */
+.shake {
+    animation: shake 0.5s ease forwards;
+}
+
+/* Para inputs vacíos después de haber sido enfocados */
+input:invalid,
+textarea:invalid {
+    border-color: #ff5722;
+}
+
+/* Botón de enviar datos */
+.btnSendForm {
+    background-color: #ff9800;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btnSendForm:hover {
+    background-color: #fb8c00;
+    transform: scale(1.05);
+}
