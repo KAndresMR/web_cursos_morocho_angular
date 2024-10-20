@@ -20,35 +20,32 @@ export class CoursesComponent {
     private courseApiService: CourseApiService
   ) { }
 
-  ngOnInit(): void {    
-    this.loadCoursesFromLocalStorage();    
+  ngOnInit(): void {
+    this.loadCoursesFromLocalStorage();
   }
 
   loadAdditionalInfo(course: Course) {
     const randomId = Math.floor(Math.random() * 15) + 1; // Genera un ID aleatorio entre 1 y 15
 
     this.courseApiService.getAdditionalInfo(randomId).subscribe(
-        (info) => {
-            course.additionalInfo = info.dato; // Almacena la descripción en el curso correspondiente
-        },
-        (error) => console.error('Error al cargar información adicional:', error)
+      (info) => {
+        course.additionalInfo = info.dato; // Almacena la descripción en el curso correspondiente
+      },
+      (error) => console.error('Error al cargar información adicional:', error)
     );
   }
-
 
   toggleDetalles(course: Course) {
     course.showDetails = !course.showDetails;
     if (course.showDetails) {
-      this.loadAdditionalInfo(course); // Pasa el curso actual
+      this.loadAdditionalInfo(course); // Carga información adicional si se muestra el detalle
     }
   }
 
-
-    // Función para cargar los cursos desde el localStorage
-    loadCoursesFromLocalStorage() {
-      //localStorage.clear();
-      this.courses = this.courseService.getCourse();
-    }
+  // Función para cargar los cursos desde el localStorage
+  loadCoursesFromLocalStorage() {
+    this.courses = this.courseService.getCourse();
+  }
 
   // Elimina un curso
   deleteCourse(courseId: number) {

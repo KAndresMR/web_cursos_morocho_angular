@@ -1,6 +1,6 @@
 // src/app/models/course.model.ts
 export interface Course {
-    id: number; // Agrega la propiedad id, hazla opcional si no siempre está presente
+    id: number;
     nameCourse: string;
     nameInstructor: string;
     startDate: string;
@@ -8,6 +8,6 @@ export interface Course {
     description: string;
     showDetails: boolean;
     additionalInfo?: {
-        dato?: string;
+        dato?: string; // Información adicional que puede o no estar presente
     } | null; // Permitir null en caso de no haber información adicional
 }

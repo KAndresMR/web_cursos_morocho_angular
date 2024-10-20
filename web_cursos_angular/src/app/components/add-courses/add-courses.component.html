@@ -9,52 +9,83 @@
 
 <body>
 
-
     <!-- Contenido de la página de agregar curso -->
     <main>
         <section id="add-course">
             <h1>Agregar Nuevo Curso</h1>
             <form (ngSubmit)="addCourse()" id="add-course-form" #cursoForm="ngForm">
+                <!-- Campo para el nombre del curso -->
                 <div>
                     <label for="course-name">Nombre del Curso:</label><br>
-                    <input class="input-field" type="text" id="course-name" (keypress)="onKeyPress($event)" name="course-name" required [(ngModel)]="newCourse.nameCourse">
+                    <input class="input-field" type="text" id="course-name" (keypress)="onKeyPress($event)"
+                        name="course-name" required [(ngModel)]="newCourse.nameCourse">
+                    <!-- Mensaje de error si el campo es inválido -->
+                    <div *ngIf="cursoForm.controls['course-name']?.invalid && (cursoForm.controls['course-name']?.touched || cursoForm.controls['course-name']?.dirty)"
+                        class="error-message">
+                        El nombre del curso es requerido.
+                    </div>
                 </div>
 
+                <!-- Campo para el nombre del instructor -->
                 <div>
                     <label for="instructor-name">Nombre del Instructor:</label><br>
-                    <input class="input-field" type="text" id="instructor-name" (keypress)="onKeyPress($event)" name="instructor-name" required [(ngModel)]="newCourse.nameInstructor">
+                    <input class="input-field" type="text" id="instructor-name" (keypress)="onKeyPress($event)"
+                        name="instructor-name" required [(ngModel)]="newCourse.nameInstructor">
+                    <div *ngIf="cursoForm.controls['instructor-name']?.invalid && (cursoForm.controls['instructor-name']?.touched || cursoForm.controls['instructor-name']?.dirty)"
+                        class="error-message">
+                        El nombre del instructor es requerido.
+                    </div>
                 </div>
 
+                <!-- Campo para la fecha de inicio -->
                 <div>
                     <label for="start-date">Fecha de Inicio:</label><br>
-                    <input class="input-field" type="date" id="start-date" (keypress)="onKeyPress($event)" name="start-date" required [(ngModel)]="newCourse.startDate">
+                    <input class="input-field" type="date" id="start-date" (keypress)="onKeyPress($event)"
+                        name="start-date" required [(ngModel)]="newCourse.startDate" [min]="minDate">
+                    <div *ngIf="cursoForm.controls['start-date']?.invalid && (cursoForm.controls['start-date']?.touched || cursoForm.controls['start-date']?.dirty)"
+                        class="error-message">
+                        La fecha de inicio es requerida.
+                    </div>
                 </div>
 
+                <!-- Campo para la duración del curso -->
                 <div>
                     <label for="duration">Duración (en semanas):</label><br>
-                    <input class="input-field" type="number" id="duration" (keypress)="onKeyPress($event)" name="duration" required [(ngModel)]="newCourse.duration">
+                    <input class="input-field" type="number" id="duration" (keypress)="onKeyPress($event)"
+                        name="duration" required [(ngModel)]="newCourse.duration">
+                    <div *ngIf="cursoForm.controls['duration']?.invalid && (cursoForm.controls['duration']?.touched || cursoForm.controls['duration']?.dirty)"
+                        class="error-message">
+                        La duración es requerida y debe ser un número positivo.
+                    </div>
                 </div>
 
+                <!-- Campo para la descripción del curso -->
                 <div>
                     <label for="description">Descripción:</label><br>
-                    <textarea class="input-field" id="description" (keypress)="onKeyPress($event)" name="description" rows="4" required [(ngModel)]="newCourse.description"></textarea>
+                    <textarea class="input-field" id="description" (keypress)="onKeyPress($event)" name="description"
+                        rows="4" required [(ngModel)]="newCourse.description"></textarea>
+                    <div *ngIf="cursoForm.controls['description']?.invalid && (cursoForm.controls['description']?.touched || cursoForm.controls['description']?.dirty)"
+                        class="error-message">
+                        La descripción es requerida.
+                    </div>
                 </div>
 
+                <!-- Botón para agregar el curso, deshabilitado si el formulario es inválido -->
                 <button type="submit" class="btnAddCourse" [disabled]="!cursoForm.form.valid">Agregar Curso</button>
             </form>
+
             <!-- Mensaje de éxito o error -->
             <div *ngIf="message" class="mensaje">{{ message }}</div>
         </section>
 
+        <!-- Mensaje de éxito al agregar un curso -->
         <div *ngIf="showSuccessMessage" class="overlay">
             <div class="success-message">
-              <h2>¡Curso agregado exitosamente!</h2>
-              <p>El curso se ha añadido correctamente a la lista.</p>
+                <h2>¡Curso agregado exitosamente!</h2>
+                <p>El curso se ha añadido correctamente a la lista.</p>
             </div>
-          </div>
-          
+        </div>
     </main>
-
 
 </body>
 

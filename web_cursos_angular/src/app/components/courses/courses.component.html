@@ -5,23 +5,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cursos - Gestión de Cursos</title>
-
 </head>
 
 <body>
-    <!-- Contenido de la página de cursos -->
     <main>
+        <!-- Itera sobre la lista de cursos -->
         <div *ngFor="let curso of courses" class="course-card">
-
             <h3>{{ curso.nameCourse }}</h3>
             <p>Instructor: {{ curso.nameInstructor }}</p>
             <p>Inicio: {{ curso.startDate }}</p>
             <p>Duración: {{ curso.duration }} semanas</p>
             <button class="btn" (click)="toggleDetalles(curso)">Ver más detalles</button>
+
             <!-- Muestra la descripción solo si showDetails es true -->
             <p class="course-details" [style.display]="curso.showDetails ? 'block' : 'none'">
                 {{ curso.description }}
-            </p>            
+            </p>
 
             <!-- Aquí muestras la información adicional -->
             <p *ngIf="curso.additionalInfo" class="additional-info">

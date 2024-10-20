@@ -10,8 +10,8 @@ app.use(express.json());
 let courses = [
     { id: 1, nameCourse: 'Curso de Diseño Web', nameInstructor: 'María López', startDate: '15/10/2024', duration: '6', description: 'Explora el diseño web moderno utilizando HTML5, CSS3 y herramientas de diseño gráfico.', showDetails: false },
     { id: 2, nameCourse: 'Curso de Ciberseguridad', nameInstructor: 'Andres Morocho', startDate: '30/05/2024', duration: '10', description: 'Aprende los fundamentos de la programación en varios lenguajes.', showDetails: false },
-    { id: 3, nameCourse: 'Gestion Empresarial', nameInstructor: 'Roberto Garcia', startDate: '15/06/2024', duration: '16', description: 'Aprende los fundamentos de la gestión empresarial.', showDetails: false },
-    { id: 4, nameCourse: 'Vision por Computador', nameInstructor: 'Vladimir Roblez', startDate: '31/10/2024', duration: '18', description: 'Aprende los fundamentos de visión por computador en varios aspectos.', showDetails: false },
+    { id: 3, nameCourse: 'Gestión Empresarial', nameInstructor: 'Roberto Garcia', startDate: '15/06/2024', duration: '16', description: 'Aprende los fundamentos de la gestión empresarial.', showDetails: false },
+    { id: 4, nameCourse: 'Visión por Computador', nameInstructor: 'Vladimir Roblez', startDate: '31/10/2024', duration: '18', description: 'Aprende los fundamentos de visión por computador en varios aspectos.', showDetails: false },
     { id: 5, nameCourse: 'Programación Web', nameInstructor: 'Critian Timbi', startDate: '22/01/2024', duration: '20', description: 'Aprende los fundamentos de la programación web en varios lenguajes.', showDetails: false },
     { id: 6, nameCourse: 'Desarrollo de Aplicaciones Móviles', nameInstructor: 'Ana Torres', startDate: '12/03/2024', duration: '14', description: 'Crea aplicaciones móviles para Android y iOS utilizando herramientas modernas.', showDetails: false },
     { id: 7, nameCourse: 'Inteligencia Artificial', nameInstructor: 'Carlos Mendoza', startDate: '05/04/2024', duration: '8', description: 'Introducción a la inteligencia artificial y sus aplicaciones en la vida real.', showDetails: false },
@@ -25,13 +25,15 @@ let courses = [
     { id: 15, nameCourse: 'Gestión de Proyectos', nameInstructor: 'Cristina Vallejo', startDate: '05/02/2025', duration: '8', description: 'Estrategias y herramientas para una gestión efectiva de proyectos.', showDetails: false }
 ];
 
-
 // Rutas
+
+// Obtener todos los cursos
 app.get('/api/courses', (req, res) => {
     res.json(courses);
 });
 
-    app.get('/api/courses/:id/additional-info', (req, res) => {
+// Obtener información adicional de un curso
+app.get('/api/courses/:id/additional-info', (req, res) => {
     const courseId = parseInt(req.params.id); // Convierte a número
     const course = courses.find(c => c.id === courseId);
 
@@ -45,20 +47,21 @@ app.get('/api/courses', (req, res) => {
     }
 });
 
-  
-
+// Agregar un nuevo curso
 app.post('/api/courses', (req, res) => {
     const newCourse = { id: courses.length + 1, ...req.body };
     courses.push(newCourse);
     res.status(201).json(newCourse);
 });
 
+// Eliminar un curso
 app.delete('/api/courses/:id', (req, res) => {
     const { id } = req.params;
     courses = courses.filter(course => course.id !== parseInt(id));
     res.status(204).send();
 });
 
+// Iniciar el servidor
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);
 });
