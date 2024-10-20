@@ -5,39 +5,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cursos - Gestión de Cursos</title>
-    
+
 </head>
 
 <body>
     <!-- Contenido de la página de cursos -->
     <main>
-        <div id="courses-list">
-            <h1>Listado de Cursos</h1>                        
-            <!-- Ejemplo de tarjeta de curso (serán agregadas dinámicamente con JavaScript) -->
-            <div class="course-card">
-                <h3>Curso de Programación</h3>
-                <p>Instructor: Juan Pérez</p>
-                <p>Inicio: 01/10/2024</p>
-                <p>Duración: 8 semanas</p>
-                <button class="btn">Ver más detalles</button>
-                <p class="course-details" style="display:none;">
-                    Aprenderás los fundamentos de la programación con ejercicios prácticos y proyectos.
-                </p>
-            </div>
-            <div class="course-card">
-                <h3>Curso de Diseño Web</h3>
-                <p>Instructor: María López</p>
-                <p>Inicio: 15/10/2024</p>
-                <p>Duración: 6 semanas</p>
-                <button class="btn">Ver más detalles</button>
-                <p class="course-details" style="display:none;">
-                    Explora el diseño web moderno utilizando HTML5, CSS3 y herramientas de diseño gráfico.
-                </p>
-            </div>
-            <!-- Aquí se agregarán más cursos dinámicamente -->
-            
-        </div>        
-    </main>  
+        <div *ngFor="let curso of courses" class="course-card">
+
+            <h3>{{ curso.nameCourse }}</h3>
+            <p>Instructor: {{ curso.nameInstructor }}</p>
+            <p>Inicio: {{ curso.startDate }}</p>
+            <p>Duración: {{ curso.duration }} semanas</p>
+            <button class="btn" (click)="toggleDetalles(curso)">Ver más detalles</button>
+            <!-- Muestra la descripción solo si showDetails es true -->
+            <p class="course-details" [style.display]="curso.showDetails ? 'block' : 'none'">
+                {{ curso.description }}
+            </p>            
+
+            <!-- Aquí muestras la información adicional -->
+            <p *ngIf="curso.additionalInfo" class="additional-info">
+                API: {{ curso.additionalInfo }}
+            </p>
+        </div>
+    </main>
 </body>
 
 </html>

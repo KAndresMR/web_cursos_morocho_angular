@@ -14,35 +14,45 @@
     <main>
         <section id="add-course">
             <h1>Agregar Nuevo Curso</h1>
-            <form id="add-course-form">
+            <form (ngSubmit)="addCourse()" id="add-course-form" #cursoForm="ngForm">
                 <div>
                     <label for="course-name">Nombre del Curso:</label><br>
-                    <input type="text" id="course-name" name="course-name" required>
+                    <input class="input-field" type="text" id="course-name" (keypress)="onKeyPress($event)" name="course-name" required [(ngModel)]="newCourse.nameCourse">
                 </div>
 
                 <div>
                     <label for="instructor-name">Nombre del Instructor:</label><br>
-                    <input type="text" id="instructor-name" name="instructor-name" required>
+                    <input class="input-field" type="text" id="instructor-name" (keypress)="onKeyPress($event)" name="instructor-name" required [(ngModel)]="newCourse.nameInstructor">
                 </div>
 
                 <div>
                     <label for="start-date">Fecha de Inicio:</label><br>
-                    <input type="date" id="start-date" name="start-date" required>
+                    <input class="input-field" type="date" id="start-date" (keypress)="onKeyPress($event)" name="start-date" required [(ngModel)]="newCourse.startDate">
                 </div>
 
                 <div>
                     <label for="duration">Duración (en semanas):</label><br>
-                    <input type="number" id="duration" name="duration" required>
+                    <input class="input-field" type="number" id="duration" (keypress)="onKeyPress($event)" name="duration" required [(ngModel)]="newCourse.duration">
                 </div>
 
                 <div>
                     <label for="description">Descripción:</label><br>
-                    <textarea id="description" name="description" rows="4" required></textarea>
+                    <textarea class="input-field" id="description" (keypress)="onKeyPress($event)" name="description" rows="4" required [(ngModel)]="newCourse.description"></textarea>
                 </div>
 
-                <button type="submit" class="btnAddCourse">Agregar Curso</button>
+                <button type="submit" class="btnAddCourse" [disabled]="!cursoForm.form.valid">Agregar Curso</button>
             </form>
+            <!-- Mensaje de éxito o error -->
+            <div *ngIf="message" class="mensaje">{{ message }}</div>
         </section>
+
+        <div *ngIf="showSuccessMessage" class="overlay">
+            <div class="success-message">
+              <h2>¡Curso agregado exitosamente!</h2>
+              <p>El curso se ha añadido correctamente a la lista.</p>
+            </div>
+          </div>
+          
     </main>
 
 
